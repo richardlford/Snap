@@ -1,0 +1,374 @@
+<?xml version="1.0"?>
+<blocks app="Snap! 6, https://snap.berkeley.edu" version="1">
+  <block-definition s="$globe show current location" type="command" category="other">
+    <header/>
+    <code/>
+    <translations>de:$globe zeige aktuellen Standort&#xD;pt:mostra a localiza&#xE7;&#xE3;o corrente do dispositivo no $globe&#xD;ca:$globe centra a la meva ubicaci&#xF3;&#xD;</translations>
+    <inputs/>
+    <script>
+      <custom-block s="set $globe to lon: %n lat: %n">
+        <custom-block s="$globe current longitude"/>
+        <custom-block s="$globe current latitude"/>
+      </custom-block>
+    </script>
+  </block-definition>
+  <block-definition s="$globe zoom" type="reporter" category="other">
+    <header/>
+    <code/>
+    <translations>de:$globe Zoom&#xD;pt:o zoom do $globe&#xD;ca:$globe zoom&#xD;</translations>
+    <inputs/>
+    <script>
+      <block s="doReport">
+        <block s="reportApplyExtension">
+          <l>map_zoom</l>
+          <list/>
+        </block>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="set $globe zoom to %'n'" type="command" category="other">
+    <header/>
+    <code/>
+    <translations>de:setze $globe Zoom auf _&#xD;pt:altera o zoom do $globe para _&#xD;ca:$globe fixa el zoom a _&#xD;</translations>
+    <inputs>
+      <input type="%n">10</input>
+    </inputs>
+    <script>
+      <block s="doApplyExtension">
+        <l>map_zoom(n)</l>
+        <list>
+          <block var="n"/>
+        </list>
+      </block>
+      <custom-block s="update $globe"/>
+    </script>
+  </block-definition>
+  <block-definition s="$globe longitude of x %'x'" type="reporter" category="other">
+    <header/>
+    <code/>
+    <translations>de:$globe L&#xE4;ngengrad von x _&#xD;pt:a longitude no $globe da coordenada x _&#xD;ca:$globe longitud per a x _&#xD;</translations>
+    <inputs>
+      <input type="%n">0</input>
+    </inputs>
+    <script>
+      <block s="doReport">
+        <block s="reportApplyExtension">
+          <l>map_lon(x)</l>
+          <list>
+            <block var="x"/>
+          </list>
+        </block>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="$globe latitude of y %'y'" type="reporter" category="other">
+    <header/>
+    <code/>
+    <translations>de:$globe Breitengrad von y _&#xD;pt:a latitude no $globe da coordenada y _&#xD;ca:$globe latitud per a y _&#xD;</translations>
+    <inputs>
+      <input type="%n">0</input>
+    </inputs>
+    <script>
+      <block s="doReport">
+        <block s="reportApplyExtension">
+          <l>map_lat(y)</l>
+          <list>
+            <block var="y"/>
+          </list>
+        </block>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="set $globe to lon: %'lon' lat: %'lat'" type="command" category="other">
+    <header/>
+    <code/>
+    <translations>de:setze $globe auf L&#xE4;nge: _ Breite: _&#xD;pt:altera a posi&#xE7;&#xE3;o no $globe para (longitude: _ , latitude: _ )&#xD;ca:$globe centra a longitud: _ latitud: _&#xD;</translations>
+    <inputs>
+      <input type="%n">-122.257852</input>
+      <input type="%n">37.872099</input>
+    </inputs>
+    <script>
+      <block s="doApplyExtension">
+        <l>map_view(lon, lat)</l>
+        <list>
+          <block var="lon"/>
+          <block var="lat"/>
+        </list>
+      </block>
+      <custom-block s="update $globe"/>
+    </script>
+  </block-definition>
+  <block-definition s="y of $globe latitude %'lat'" type="reporter" category="other">
+    <header/>
+    <code/>
+    <translations>de:y von $globe Breitengrad _&#xD;pt:a coordenada y da latitude _ no $globe&#xD;ca:$globe y per a latitud _&#xD;</translations>
+    <inputs>
+      <input type="%n"/>
+    </inputs>
+    <script>
+      <block s="doReport">
+        <block s="reportApplyExtension">
+          <l>map_y(lat)</l>
+          <list>
+            <block var="lat"/>
+          </list>
+        </block>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="x of $globe longitude %'lon'" type="reporter" category="other">
+    <header/>
+    <code/>
+    <translations>de:x von $globe L&#xE4;ngengrad _&#xD;pt:a coordenada x da longidude _ no $globe&#xD;ca:$globe x per a longitud _&#xD;</translations>
+    <inputs>
+      <input type="%n"/>
+    </inputs>
+    <script>
+      <block s="doReport">
+        <block s="reportApplyExtension">
+          <l>map_x(lon)</l>
+          <list>
+            <block var="lon"/>
+          </list>
+        </block>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="change $globe by x: %'x' y: %'y' pixels" type="command" category="other">
+    <header/>
+    <code/>
+    <translations>de:&#xE4;ndere $globe um x: _ y: _ Pixel&#xD;pt:desloca a posi&#xE7;&#xE3;o do mapa de (x: _ , y: _ )&#xD;ca:$globe canvia la ubicaci&#xF3; en x: _ y: _ p&#xED;xels&#xD;</translations>
+    <inputs>
+      <input type="%n">10</input>
+      <input type="%n">10</input>
+    </inputs>
+    <script>
+      <block s="doApplyExtension">
+        <l>map_pan(x, y)</l>
+        <list>
+          <block var="x"/>
+          <block var="y"/>
+        </list>
+      </block>
+      <custom-block s="update $globe"/>
+    </script>
+  </block-definition>
+  <block-definition s="$globe distance in km to %'target'" type="reporter" category="other">
+    <header/>
+    <code/>
+    <translations>de:$globe Entfernung in km zu _&#xD;pt:a tua dist&#xE2;ncia em km a _ no $globo&#xD;ca:$globe dist&#xE0;ncia en km fins a _&#xD;</translations>
+    <inputs>
+      <input type="%s" readonly="true">
+        <options>&#xA7;_objectsMenu</options>
+      </input>
+    </inputs>
+    <script>
+      <block s="doDeclareVariables">
+        <list>
+          <l>trg</l>
+        </list>
+      </block>
+      <block s="doSetVar">
+        <l>trg</l>
+        <block s="reportObject">
+          <block var="target"/>
+        </block>
+      </block>
+      <block s="doIf">
+        <block s="reportNot">
+          <block s="reportAnd">
+            <block s="reportIsA">
+              <block s="reportGet">
+                <l>
+                  <option>self</option>
+                </l>
+              </block>
+              <l>
+                <option>sprite</option>
+              </l>
+            </block>
+            <block s="reportIsA">
+              <block var="trg"/>
+              <l>
+                <option>sprite</option>
+              </l>
+            </block>
+          </block>
+        </block>
+        <script>
+          <block s="doReport">
+            <l>-1</l>
+          </block>
+        </script>
+      </block>
+      <block s="doReport">
+        <block s="reportApplyExtension">
+          <l>map_dist(lat1, lon1, lat2, lon2)</l>
+          <list>
+            <custom-block s="$globe latitude of y %n">
+              <block s="yPosition"/>
+            </custom-block>
+            <custom-block s="$globe longitude of x %n">
+              <block s="xPosition"/>
+            </custom-block>
+            <custom-block s="$globe latitude of y %n">
+              <block s="reportAttributeOf">
+                <l>
+                  <option>y position</option>
+                </l>
+                <block var="target"/>
+              </block>
+            </custom-block>
+            <custom-block s="$globe longitude of x %n">
+              <block s="reportAttributeOf">
+                <l>
+                  <option>x position</option>
+                </l>
+                <block var="target"/>
+              </block>
+            </custom-block>
+          </list>
+        </block>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="$globe current location" type="reporter" category="other">
+    <header/>
+    <code/>
+    <translations>de:$globe aktuelle Position&#xD;pt:a localiza&#xE7;&#xE3;o corrente do dispositivo no $globe&#xD;ca:$globe ubicaci&#xF3; actual&#xD;</translations>
+    <inputs/>
+    <script>
+      <block s="doDeclareVariables">
+        <list>
+          <l>callback</l>
+        </list>
+      </block>
+      <block s="doSetVar">
+        <l>callback</l>
+        <block s="reportApplyExtension">
+          <l>geo_location(acc?)</l>
+          <list>
+            <block s="reportBoolean">
+              <l>
+                <bool>false</bool>
+              </l>
+            </block>
+          </list>
+        </block>
+      </block>
+      <block s="doWaitUntil">
+        <block s="reportEquals">
+          <block s="reportListAttribute">
+            <l>
+              <option>length</option>
+            </l>
+            <block s="evaluate">
+              <block var="callback"/>
+              <list/>
+            </block>
+          </block>
+          <l>2</l>
+        </block>
+      </block>
+      <block s="doReport">
+        <block s="evaluate">
+          <block var="callback"/>
+          <list/>
+        </block>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="$globe current latitude" type="reporter" category="other">
+    <header/>
+    <code/>
+    <translations>de:$globe aktueller Breitengrad&#xD;pt:a latitude corrente do dispositivo no $globe&#xD;ca:$globe latitud actual&#xD;</translations>
+    <inputs/>
+    <script>
+      <block s="doReport">
+        <block s="reportListItem">
+          <l>1</l>
+          <custom-block s="$globe current location"/>
+        </block>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="$globe current longitude" type="reporter" category="other">
+    <header/>
+    <code/>
+    <translations>de:$globe aktueller L&#xE4;ngengrad&#xD;pt:a longitude corrente do dispositivo no $globe&#xD;ca:$globe longitud actual&#xD;</translations>
+    <inputs/>
+    <script>
+      <block s="doReport">
+        <block s="reportListItem">
+          <l>2</l>
+          <custom-block s="$globe current location"/>
+        </block>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="update $globe" type="command" category="other">
+    <header/>
+    <code/>
+    <translations>de:aktualisiere $globe&#xD;pt:actualiza o $globe&#xD;ca:$globe for&#xE7;a refresc&#xD;</translations>
+    <inputs/>
+    <script>
+      <block s="doApplyExtension">
+        <l>map_update</l>
+        <list/>
+      </block>
+      <block s="doTellTo">
+        <block s="reportGet">
+          <l>
+            <option>stage</option>
+          </l>
+        </block>
+        <block s="reifyScript">
+          <script>
+            <block s="doSwitchToCostume">
+              <custom-block s="$globe as costume"/>
+            </block>
+          </script>
+          <list/>
+        </block>
+        <list/>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="$globe as costume" type="reporter" category="other">
+    <header/>
+    <code/>
+    <translations>de:$globe als Kost&#xFC;m&#xD;pt:a parte vis&#xED;vel do $globe na forma de traje&#xD;ca:$globe vestit del mapa actual&#xD;</translations>
+    <inputs/>
+    <script>
+      <block s="doWaitUntil">
+        <block s="reportApplyExtension">
+          <l>map_loaded</l>
+          <list/>
+        </block>
+      </block>
+      <block s="doReport">
+        <block s="reportApplyExtension">
+          <l>map_costume</l>
+          <list/>
+        </block>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="set $globe style to %'name'" type="command" category="other">
+    <header/>
+    <code/>
+    <translations>de:setze $globe Stil auf _&#xD;pt:altera o estilo do $globe para _&#xD;ca:$globe fixa l'estil de mapa a _&#xD;</translations>
+    <inputs>
+      <input type="%s" readonly="true">OpenStreetMap<options>OpenStreetMap&#xD;Wikimedia&#xD;Watercolor&#xD;Toner&#xD;Terrain&#xD;Topographic&#xD;Satellite&#xD;Streets&#xD;Shading&#xD;Mapbox (experimental)</options></input>
+    </inputs>
+    <script>
+      <block s="doApplyExtension">
+        <l>map_style(name)</l>
+        <list>
+          <block var="name"/>
+        </list>
+      </block>
+      <custom-block s="update $globe"/>
+    </script>
+  </block-definition>
+</blocks>

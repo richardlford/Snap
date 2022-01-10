@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<blocks app="Snap! 6, https://snap.berkeley.edu" version="1">
+  <block-definition s="costume from text %'text' size %'size'" type="reporter" category="looks">
+    <header/>
+    <code/>
+    <translations>de:Kost&#xFC;m aus Text _ Gr&#xF6;&#xDF;e _&#xD;pt:um traje com o texto _ de tamanho _&#xD;</translations>
+    <inputs>
+      <input type="%s">A</input>
+      <input type="%n">72</input>
+    </inputs>
+    <script>
+      <block s="doDeclareVariables">
+        <list>
+          <l>costume</l>
+          <l>x</l>
+          <l>y</l>
+          <l>dir</l>
+          <l>cst</l>
+          <l>trails</l>
+        </list>
+      </block>
+      <block s="doSetVar">
+        <l>x</l>
+        <block s="xPosition"/>
+      </block>
+      <block s="doSetVar">
+        <l>y</l>
+        <block s="yPosition"/>
+      </block>
+      <block s="doSetVar">
+        <l>dir</l>
+        <block s="direction"/>
+      </block>
+      <block s="doSetVar">
+        <l>cst</l>
+        <block s="getCostumeIdx"/>
+      </block>
+      <block s="up"/>
+      <block s="gotoXY">
+        <l>0</l>
+        <l>0</l>
+      </block>
+      <block s="setHeading">
+        <l>90</l>
+      </block>
+      <block s="doSwitchToCostume">
+        <l>
+          <option>Turtle</option>
+        </l>
+      </block>
+      <block s="doSetVar">
+        <l>trails</l>
+        <block s="reportPenTrailsAsCostume"/>
+      </block>
+      <block s="clear"/>
+      <block s="gotoXY">
+        <block s="reportAttributeOf">
+          <l>
+            <option>left</option>
+          </l>
+          <l>Stage</l>
+        </block>
+        <l>0</l>
+      </block>
+      <block s="write">
+        <block var="text"/>
+        <block var="size"/>
+      </block>
+      <block s="gotoXY">
+        <block s="reportAttributeOf">
+          <l>
+            <option>left</option>
+          </l>
+          <l>Stage</l>
+        </block>
+        <l>0</l>
+      </block>
+      <block s="doSetVar">
+        <l>costume</l>
+        <block s="reportPenTrailsAsCostume"/>
+      </block>
+      <block s="clear"/>
+      <block s="doApplyExtension">
+        <l>obj_name(obj, name)</l>
+        <list>
+          <block var="costume"/>
+          <block var="text"/>
+        </list>
+      </block>
+      <block s="gotoXY">
+        <l>0</l>
+        <l>0</l>
+      </block>
+      <block s="doSwitchToCostume">
+        <block var="trails"/>
+      </block>
+      <block s="doStamp"/>
+      <block s="doSwitchToCostume">
+        <block var="cst"/>
+      </block>
+      <block s="gotoXY">
+        <block var="x"/>
+        <block var="y"/>
+      </block>
+      <block s="setHeading">
+        <block var="dir"/>
+      </block>
+      <block s="doReport">
+        <block var="costume"/>
+      </block>
+    </script>
+  </block-definition>
+</blocks>

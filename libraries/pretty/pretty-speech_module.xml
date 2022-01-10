@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<blocks app="Snap! 6, https://snap.berkeley.edu" version="1">
+  <block-definition s="speak %'text' with %'lang' accent $nl and pitch %'pitch' rate %'rate'" type="command" category="sound">
+    <header/>
+    <code/>
+    <translations>de:sprich _ mit _ Aussprache _ und H&#xF6;he _ Geschwindigkeit _&#xD;pt:fala _ na l&#xED;ngua _ _ com tom _ e velocidade _&#xD;</translations>
+    <inputs>
+      <input type="%s">Hello, World!</input>
+      <input type="%txt">en-US<options>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;=ar&#xD;&#x411;&#x44A;&#x43B;&#x433;&#x430;&#x440;&#x441;&#x43A;&#x438;=bg&#xD;&#x9AC;&#x9BE;&#x982;&#x9B2;&#x9BE;=bn&#xD;Catal&#xE0;=ca&#xD;Catal&#xE0; - Valenci&#xE0;=ca-VA&#xD;&#x10C;esky=cs&#xD;Deutsch=de&#xD;Dansk=dk&#xD;&#x395;&#x3BB;&#x3BB;&#x3B7;&#x3BD;&#x3B9;&#x3BA;&#x3AC;=el&#xD;English-American=en-US&#xD;English-British=en-GB&#xD;Esperanto=eo&#xD;Espa&#xF1;ol=es&#xD;Eesti=et&#xD;Euskara=eu&#xD;suomi=fi&#xD;Fran&#xE7;ais=fr&#xD;Galego=gl&#xD;Hrvatski=hr&#xD;Magyar=hu&#xD;Interlingua=ia&#xD;Bahasa Indonesia=id&#xD;Italiano=it&#xD;&#x65E5;&#x672C;&#x8A9E;=ja&#xD;&#x306B;&#x307B;&#x3093;&#x3054;=ja-HIRA&#xD;&#xC95;&#xCA8;&#xCCD;&#xCA8;&#xCA1;=kn&#xD;&#xD55C;&#xAD6D;&#xC5B4;=ko&#xD;Malayalam=ml&#xD;Nederlands=nl&#xD;Norsk=no&#xD;Polski=pl&#xD;Portugu&#xEA;s=pt&#xD;Portugu&#xEA;s do Brasil=pt-BR&#xD;Rom&#xE2;n=ro&#xD;&#x420;&#x443;&#x441;&#x441;&#x43A;&#x438;&#x439;=ru&#xD;Sloven&#x161;&#x10D;ina=si&#xD;svenska=sv&#xD;Tamil=ta&#xD;Telagu=te&#xD;T&#xFC;rk&#xE7;e=tr&#xD;&#x423;&#x43A;&#x440;&#x430;&#x457;&#x43D;&#x441;&#x44C;&#x43A;&#x430;=ua&#xD;&#x7B80;&#x4F53;&#x4E2D;&#x6587;=zh-CN&#xD;&#x7E41;&#x9AD4;&#x4E2D;&#x6587;=zh-TW</options></input>
+      <input type="%n">1</input>
+      <input type="%n">1</input>
+    </inputs>
+    <script>
+      <block s="doApplyExtension">
+        <l>tts_speak(txt, lang, pitch, rate)</l>
+        <list>
+          <block var="text"/>
+          <block var="lang"/>
+          <block var="pitch"/>
+          <block var="rate"/>
+        </list>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="speak %'text' with %'lang' accent $nl and pitch %'pitch' rate %'rate' and wait" type="command" category="sound">
+    <header/>
+    <code/>
+    <translations>de:sprich _ mit _ Aussprache _ und H&#xF6;he _ Geschwindigkeit _ und warte&#xD;pt:fala _ na l&#xED;ngua _ _ com tom _ e velocidade _ , e espera&#xD;</translations>
+    <inputs>
+      <input type="%s">Hello, World!</input>
+      <input type="%txt">en-US<options>&#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;=ar&#xD;&#x411;&#x44A;&#x43B;&#x433;&#x430;&#x440;&#x441;&#x43A;&#x438;=bg&#xD;&#x9AC;&#x9BE;&#x982;&#x9B2;&#x9BE;=bn&#xD;Catal&#xE0;=ca&#xD;Catal&#xE0; - Valenci&#xE0;=ca-VA&#xD;&#x10C;esky=cs&#xD;Deutsch=de&#xD;Dansk=dk&#xD;&#x395;&#x3BB;&#x3BB;&#x3B7;&#x3BD;&#x3B9;&#x3BA;&#x3AC;=el&#xD;English-American=en-US&#xD;English-British=en-GB&#xD;Esperanto=eo&#xD;Espa&#xF1;ol=es&#xD;Eesti=et&#xD;Euskara=eu&#xD;suomi=fi&#xD;Fran&#xE7;ais=fr&#xD;Galego=gl&#xD;Hrvatski=hr&#xD;Magyar=hu&#xD;Interlingua=ia&#xD;Bahasa Indonesia=id&#xD;Italiano=it&#xD;&#x65E5;&#x672C;&#x8A9E;=ja&#xD;&#x306B;&#x307B;&#x3093;&#x3054;=ja-HIRA&#xD;&#xC95;&#xCA8;&#xCCD;&#xCA8;&#xCA1;=kn&#xD;&#xD55C;&#xAD6D;&#xC5B4;=ko&#xD;Malayalam=ml&#xD;Nederlands=nl&#xD;Norsk=no&#xD;Polski=pl&#xD;Portugu&#xEA;s=pt&#xD;Portugu&#xEA;s do Brasil=pt-BR&#xD;Rom&#xE2;n=ro&#xD;&#x420;&#x443;&#x441;&#x441;&#x43A;&#x438;&#x439;=ru&#xD;Sloven&#x161;&#x10D;ina=si&#xD;svenska=sv&#xD;Tamil=ta&#xD;Telagu=te&#xD;T&#xFC;rk&#xE7;e=tr&#xD;&#x423;&#x43A;&#x440;&#x430;&#x457;&#x43D;&#x441;&#x44C;&#x43A;&#x430;=ua&#xD;&#x7B80;&#x4F53;&#x4E2D;&#x6587;=zh-CN&#xD;&#x7E41;&#x9AD4;&#x4E2D;&#x6587;=zh-TW</options></input>
+      <input type="%n">1</input>
+      <input type="%n">1</input>
+    </inputs>
+    <script>
+      <block s="doDeclareVariables">
+        <list>
+          <l>callback</l>
+        </list>
+      </block>
+      <block s="doSetVar">
+        <l>callback</l>
+        <block s="reportApplyExtension">
+          <l>tts_speak(txt, lang, pitch, rate)</l>
+          <list>
+            <block var="text"/>
+            <block var="lang"/>
+            <block var="pitch"/>
+            <block var="rate"/>
+          </list>
+        </block>
+      </block>
+      <block s="doWaitUntil">
+        <block s="evaluate">
+          <block var="callback"/>
+          <list/>
+        </block>
+      </block>
+    </script>
+  </block-definition>
+</blocks>

@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<blocks app="Snap! 7dev, https://snap.berkeley.edu" version="2">
+  <block-definition s="WEBSer $flag-1-0-255-0 open %'baudRate'" type="reporter" category="other">
+    <header/>
+    <code/>
+    <translations/>
+    <inputs>
+      <input type="%n">115200<options>9600&#xD;19200&#xD;38400&#xD;57600&#xD;115200</options></input>
+    </inputs>
+    <script>
+      <block s="doReport">
+        <block s="reportApplyExtension">
+          <l>srl_open(baud, buffer)</l>
+          <list>
+            <block var="baudRate"/>
+            <l>15000</l>
+          </list>
+        </block>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="WEBSer $flag-1-255-0-0 close %'port'" type="command" category="other">
+    <comment x="0" y="0" w="90" collapsed="true">Close port.</comment>
+    <header/>
+    <code/>
+    <translations/>
+    <inputs>
+      <input type="%s" readonly="true">port</input>
+    </inputs>
+    <script>
+      <block s="doApplyExtension">
+        <l>srl_close(port)</l>
+        <list>
+          <block var="port"/>
+        </list>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="WEBSer $flash-1-0-255-0 read %'port'" type="reporter" category="other">
+    <header/>
+    <code/>
+    <translations/>
+    <inputs>
+      <input type="%s">port</input>
+    </inputs>
+    <script>
+      <block s="doReport">
+        <block s="reportApplyExtension">
+          <l>srl_read(port)</l>
+          <list>
+            <block var="port"/>
+          </list>
+        </block>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="WEBSer $flash-1-0-255-0 write %'port' %'bytes'" type="command" category="other">
+    <comment x="0" y="0" w="193.33528645833292" collapsed="true">Write to the port a list containing numbers</comment>
+    <header/>
+    <code/>
+    <translations/>
+    <inputs>
+      <input type="%s">port</input>
+      <input type="%l"/>
+    </inputs>
+    <script>
+      <block s="doApplyExtension">
+        <l>srl_write(port, bytes)</l>
+        <list>
+          <block var="port"/>
+          <block var="bytes"/>
+        </list>
+      </block>
+    </script>
+  </block-definition>
+</blocks>

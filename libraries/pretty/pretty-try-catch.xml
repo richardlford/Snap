@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<blocks app="Snap! 6, https://snap.berkeley.edu" version="1">
+  <block-definition s="safely try %'action' then if %'error' %'handler'" type="command" category="control">
+    <comment w="276" collapsed="false">Catch errors.&#xD;&#xD;Runs the first script.  If it succeeds, nothing else happens.&#xD;But if it has an error (something that would otherwise result&#xD;in a red halo around the block), then the second script is run,&#xD;with the text of the error message that would have been shown in the variable ERROR.</comment>
+    <header/>
+    <code/>
+    <translations>pt:tenta executar _ e, em caso de erro _ , executa _&#xD;</translations>
+    <inputs>
+      <input type="%cs"/>
+      <input type="%upvar"/>
+      <input type="%cs"/>
+    </inputs>
+    <script>
+      <block s="doApplyExtension">
+        <l>err_try(cmd, catch, err)</l>
+        <list>
+          <block var="action"/>
+          <block var="handler"/>
+          <block var="error"/>
+        </list>
+      </block>
+      <block s="doApplyExtension">
+        <l>err_reset</l>
+        <list/>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="error %'msg'" type="command" category="control">
+    <comment x="0" y="0" w="268.6666666666667" collapsed="false">Throw an error.&#xD;&#xD;Makes a red halo appear around the script that runs it,&#xD;with the input text shown in a speech balloon next to&#xD;the script, just like any Snap! error.&#xD;&#xD;This is useful to put in the second script of SAFELY TRY&#xD;after some other instructions to undo the partial work of&#xD;the first script.</comment>
+    <header/>
+    <code/>
+    <translations>pt:lan&#xE7;a o erro _&#xD;</translations>
+    <inputs>
+      <input type="%txt"/>
+    </inputs>
+    <script>
+      <block s="doApplyExtension">
+        <l>err_error(msg)</l>
+        <list>
+          <block var="msg"/>
+        </list>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="safely try reporting %'this' then if %'error' report %'that'" type="reporter" category="control">
+    <comment x="0" y="0" w="316.6666666666667" collapsed="false">Catch errors in a reporter.&#xD;&#xD;Evaluates its first input.  If that expression successfully reports a value, this block reports that value.  If the expression causes a Snap! error,&#xD;then the final input slot is evaluated with the text of what would have&#xD;been the error message in variable ERROR.  SAFELY TRY then reports the value of that final expression.&#xD;&#xD;Sometimes you'll want to throw an error in the final expression.  You&#xD;can put an ERROR block inside a CALL block to do that.</comment>
+    <header/>
+    <code/>
+    <translations/>
+    <inputs>
+      <input type="%anyUE"/>
+      <input type="%upvar"/>
+      <input type="%anyUE"/>
+    </inputs>
+    <script>
+      <block s="doDeclareVariables">
+        <list>
+          <l>value</l>
+        </list>
+      </block>
+      <custom-block s="safely try %cs then if %upvar %cs">
+        <script>
+          <block s="doSetVar">
+            <l>value</l>
+            <block s="evaluate">
+              <block var="this"/>
+              <list/>
+            </block>
+          </block>
+        </script>
+        <l>err</l>
+        <script>
+          <block s="doSetVar">
+            <l>error</l>
+            <block var="err"/>
+          </block>
+          <block s="doSetVar">
+            <l>value</l>
+            <block s="evaluate">
+              <block var="that"/>
+              <list/>
+            </block>
+          </block>
+        </script>
+      </custom-block>
+      <block s="doReport">
+        <block var="value"/>
+      </block>
+    </script>
+  </block-definition>
+</blocks>
